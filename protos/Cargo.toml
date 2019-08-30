@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 grpcio = "0.4"
 protobuf = "2"
+futures = "0.1"

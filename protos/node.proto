@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message NodeRegisterRequest {
+    string name = 1;
+    string ip = 2;
+    string port = 3;
+    string cluster = 4;
+}
+
+message NodeRegisterResponse {
+    string err = 1;
+    string node = 2;
+}
+
+message HeartRequest {
+    string time = 1;
+}
+
+message HeartResponse {
+    string err = 1;
+    string time = 2;
+}
+
+service NodeRegister {
+    rpc Register(NodeRegisterRequest) returns(NodeRegisterResponse);
+    rpc Heart(HeartRequest) returns(HeartResponse);
+}
+
+

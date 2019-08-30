@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message DiscoveryRequest {
+    string name = 1;
+}
+
+message DiscoveryResponse {
+    string err = 1;
+    string node = 2;
+}
+
+message DiscoveryNodeRequest {
+    string node = 1;
+}
+
+message DiscoveryNodeResponse {
+    string err = 1;
+    string ip = 2;
+    string addr = 3;
+}
+
+service ServiceDiscovery {
+    rpc Discovery(DiscoveryRequest) returns(DiscoveryResponse);
+    rpc DiscoveryNode(DiscoveryNodeRequest) returns(DiscoveryNodeResponse);
+}

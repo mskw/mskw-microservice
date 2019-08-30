@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+
+message JsonServiceRegisterRequest {
+    string node = 1;
+    string uri = 2;
+    string name = 3;
+}
+
+message JsonServiceRegisterResponse {
+    string err = 1;
+    string uuid = 2;
+}
+
+message JsonRequest {
+    string name = 1;
+    string json = 2;
+}
+
+message JsonResponse {
+    string err = 1;
+    string json = 2;
+}
+
+service JsonService {
+    rpc ServiceRegister(JsonServiceRegisterRequest) returns(JsonServiceRegisterResponse);
+    rpc Call(JsonRequest) returns(JsonResponse);
+}
