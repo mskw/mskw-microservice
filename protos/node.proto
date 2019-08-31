@@ -21,7 +21,7 @@ message HeartResponse {
     string time = 2;
 }
 
-service NodeRegister {
+service Node {
     rpc Register(NodeRegisterRequest) returns(NodeRegisterResponse);
     rpc Heart(HeartRequest) returns(HeartResponse);
 }

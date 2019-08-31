@@ -6,6 +6,7 @@ use futures::Future;
 use std::env;
 use std::net::SocketAddr;
 use std::sync::Arc;
+//use crate::utils::simple_client;
 
 #[derive(Clone)]
 pub struct PingPongService;
@@ -32,6 +33,7 @@ pub struct PingPongClient;
 
 impl PingPongClient {
     pub fn ping(addr: &str, ping: &str) -> Result<String, grpcio::Error> {
+
         let env = Arc::new(EnvBuilder::new().build());
         let ch = ChannelBuilder::new(env).connect(addr);
         let client = protos::ping_pong_grpc::PingPongClient::new(ch);
@@ -41,5 +43,6 @@ impl PingPongClient {
         client.ping(&req)
             .map(|response| response.pong)
     }
+
 
 }

@@ -1,3 +1,5 @@
+extern crate uuid;
+
 use protos;
 use core;
 
@@ -11,6 +13,9 @@ use std::thread::sleep;
 use log::{trace, info, debug};
 use std::process::exit;
 
+mod services;
+mod schedule;
+
 fn main() {
     core::utils::setup_server();
 
@@ -21,7 +26,7 @@ fn main() {
         })
             .workers(env_parse("NUM_THREADS"))
             .bind(SocketAddr::new(IpAddr::from_str("0.0.0.0").unwrap(),
-                                  env_parse("PORT"))
+                                  env_parse("WEB_PORT"))
             )
             .unwrap()
             .run()
